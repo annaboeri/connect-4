@@ -1,0 +1,37 @@
+body {
+    background: lightgray;
+}
+
+h1 {
+    text-align: center; 
+}
+
+#scoreboard div {
+    margin: 10px;
+}
+
+#gameboard {
+    margin: 0 auto;
+    width:  800px;
+}
+
+.flex-container {
+    display: flex;
+    float:left;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 600px;
+    width: 100px;
+    border: 1px solid black;
+
+}
+
+.row {
+    height: 70px;
+    width: 70px;
+    border: 1px solid black;
+    border-radius: 40px;
+    text-align: center;
+}
+
