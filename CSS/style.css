@@ -1,15 +1,64 @@
 body {
+
+
+}
+
+#content {
+    margin: 0 auto;
+    width: 900px;
 }
 
 h1 {
-    text-align: center; 
+    text-align: center;
+    font-size: 70px;
+    font-family: 'Bungee Shade', cursive;
+    margin: 10px auto;
+}
+
+#new-game {
+    display: inline-block;
+    float: left;
+    font-family: 'Bungee Inline', cursive;
+    margin: 20px 100px;
+    padding: 5px;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 125px;
+    
+}
+
+#scoreboard {
+    display: inline-block;
+    float: left;
+    font-family: 'Bungee Inline', cursive;
+    width: 170px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 0 10px 10px 50px;
+    font-size: 20px;
 }
 
 #scoreboard div {
-    margin: 10px;
+    margin: 5px;
+}
+
+span {
+    font-size: 22px;
+    text-decoration: bold;
+}
+
+#game-result-output {
+    float: left;
+    width: 400px;
+    text-align: center;
+    margin: 30px 100px;
+    font-size: 30px;
 }
 
 #gameboard {
+    clear: both;
     margin: 0 auto;
     width:  800px;
 }
@@ -21,16 +70,25 @@ h1 {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 600px;
-    width: 100px;
-    border: 1px solid black;
+    height: 590px;
+    width: 95px;
     background-color: blue;
+}
+
+#column-1 {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
 
 }
 
+#column-7 {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
 .row {
-    height: 70px;
-    width: 70px;
+    height: 65px;
+    width: 65px;
     border: 1px solid black;
     border-radius: 40px;
     text-align: center;
