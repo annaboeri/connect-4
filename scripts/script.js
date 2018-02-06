@@ -1,7 +1,6 @@
 var game = {
-    players: [{name: "red", color: "red"}, {name: "yellow", color: "yellow"}],
+    players: [{name: "player1", color: "red"}, {name: "player2", color: "yellow"}],
     currentPlayer: null,
-    done: false,
     init: function(){
         console.log('Game initialized')
         game.currentPlayer = game.players[0]
@@ -15,23 +14,52 @@ var game = {
             game.currentPlayer = game.players[0]
         }
      },
-    
-     checkVertical: function(){
+    renderCurrentPlayer: function(){
+        for (i = 5; i >= 0; i--){
+            var $newSlot = $(this).children().eq(i)
+            if ($newSlot.css("background-color") === "rgba(0, 0, 0, 0)"){
+                $newSlot.css("background-color", game.currentPlayer.color)
+                break
+            }
+        }   
+        $currentSlot = $newSlot
+        game.checkVertical()
+        game.checkHorizontal()
+        game.switchPlayer()
+     },
+    updateScore: function(){
+        if (game.currentPlayer.name === "player1"){
+            currentPlayer1Score = currentPlayer1Score + 1
+            $player1Score.text(currentPlayer1Score) 
+        } else {
+            currentPlayer2Score = currentPlayer2Score + 1
+            $player2Score.text(currentPlayer2Score) 
+        }
+     },
+    checkVertical: function(){
         if ($currentSlot.css("background-color") === $currentSlot.prev().css("background-color") &&
             $currentSlot.prev().css("background-color") === $currentSlot.prev().prev().css("background-color") &&
             $currentSlot.prev().prev().css("background-color") === $currentSlot.prev().prev().prev().css("background-color") ||
             $currentSlot.css("background-color") === $currentSlot.next().css("background-color") &&
             $currentSlot.next().css("background-color") === $currentSlot.next().next().css("background-color") &&
             $currentSlot.next().next().css("background-color") === $currentSlot.next().next().next().css("background-color")){
-                console.log("You won!")
+                alert(game.currentPlayer.name + " ,you won!")
+                game.updateScore()
             }
+    },
+    
+    checkHorizontal: function(){
+        var currentSlotIndex = $currentSlot.index()
+        if ($currentSlot.css("background-color") === $currentSlot.parent().prev().children().eq(currentSlotIndex).css("background-color") &&
+            $currentSlot.parent().prev().children().eq(currentSlotIndex).css("background-color") === $currentSlot.parent().prev().prev().children().eq(currentSlotIndex).css("background-color") &&
+            $currentSlot.parent().prev().prev().children().eq(currentSlotIndex).css("background-color")  === $currentSlot.parent().prev().prev().prev().children().eq(currentSlotIndex).css("background-color") ||
+            $currentSlot.css("background-color") === $currentSlot.parent().next().children().eq(currentSlotIndex).css("background-color") &&
+            $currentSlot.parent().next().children().eq(currentSlotIndex).css("background-color") === $currentSlot.parent().next().next().children().eq(currentSlotIndex).css("background-color") &&
+            $currentSlot.parent().next().next().children().eq(currentSlotIndex).css("background-color")  === $currentSlot.parent().next().next().next().children().eq(currentSlotIndex).css("background-color")) {
+            alert(game.currentPlayer.name + " ,you won!")
+            game.updateScore()
+        } 
     }
-
-   
-     
-   
-        
-//  checkHorizontal: 
 
 
 //  checkRightAndDown: 
@@ -52,28 +80,25 @@ var $column5 = $('#column-5')
 var $column6 = $('#column-6')
 var $column7 = $('#column-7')
 
-var $row = $('.row')
+var $row1 = $('.row-1')
+var $row2 = $('.row-2')
+var $row3 = $('.row-3')
+var $row4 = $('.row-4')
+var $row5 = $('.row-5')
+var $row6 = $('.row-6')
+var $row7 = $('.row-7')
+
+var $player1Score = $('#player-1-score')
+var $player2Score = $('#player-2-score')
+
+var currentPlayer1Score = 0
+var currentPlayer2Score = 0
 
 
-$($column1).click(renderCurrentPlayer)
-$($column2).click(renderCurrentPlayer)
-$($column3).click(renderCurrentPlayer)
-$($column4).click(renderCurrentPlayer)
-$($column5).click(renderCurrentPlayer)
-$($column6).click(renderCurrentPlayer)
-$($column7).click(renderCurrentPlayer)
-
-
-function renderCurrentPlayer (){
-    for (i = 5; i >= 0; i--){
-        var $newSlot = $(this).children().eq(i)
-        if ($newSlot.css("background-color") === "rgba(0, 0, 0, 0)"){
-            $newSlot.css("background-color", game.currentPlayer.color)
-            break
-        }
-    }   
-    $currentSlot = $newSlot
-    game.checkVertical()
-    game.switchPlayer()
-  
- }
+$($column1).click(game.renderCurrentPlayer)
+$($column2).click(game.renderCurrentPlayer)
+$($column3).click(game.renderCurrentPlayer)
+$($column4).click(game.renderCurrentPlayer)
+$($column5).click(game.renderCurrentPlayer)
+$($column6).click(game.renderCurrentPlayer)
+$($column7).click(game.renderCurrentPlayer)
