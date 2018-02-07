@@ -19,10 +19,6 @@ var $row6 = $('.row-6')
 var $row7 = $('.row-7')
 
 
-//add sound effects
-//sliding animation 
-
-
 var game = {
     players: [{name: "Player 1", color: "red"}, {name: "Player 2", color: "yellow"}],
     currentPlayer: null,
@@ -44,16 +40,18 @@ var game = {
     resetGame: function(){
         game.gameOver = false
         game.currentPlayer = game.players[0]
-        $gameResultOutput.text("")
         $row.css("background-color", "rgb(255, 255, 255)")
+        $player1Box.css("background-color", "rgba(255, 255, 255, 0.95)")
+        $player2Box.css("background-color", "rgba(255, 255, 255, 0.95)")
+        
     },
     setPlayerColor: function(){
         swal("Player 1, choose your color", {
           closeOnClickOutside: false,
           buttons: {
-            black: {
-                value: 'rgb(0, 0, 0)',
-                className: "black-btn"
+            green: {
+                value: 'rgb(51, 204, 51)',
+                className: "green-btn"
             },
             yellow: {
                 value: 'rgb(255, 255, 0)',
@@ -63,9 +61,9 @@ var game = {
                 value: 'rgb(255, 51, 153)',
                 className: "pink-btn"
             },
-            teal: {
-                value: 'rgb(51, 233, 204)',
-                className: "teal-btn"
+            orange: {
+                value: 'rgb(255, 140, 26)',
+                className: "orange-btn"
             },
           }
         })
@@ -76,9 +74,9 @@ var game = {
         swal("Player 2, choose your color", {
             closeOnClickOutside: false,
             buttons: {
-              black: {
-                  value: 'rgb(0, 0, 0)',
-                  className: "black-btn"
+              green: {
+                  value: 'rgb(51, 204, 51)',
+                  className: "green-btn"
               },
               yellow: {
                   value: 'rgb(255, 255, 0)',
@@ -88,9 +86,9 @@ var game = {
                   value: 'rgb(255, 51, 153)',
                   className: "pink-btn"
               },
-              teal: {
-                  value: 'rgb(51, 233, 204)',
-                  className: "teal-btn"
+              orange: {
+                  value: 'rgb(255, 140, 26)',
+                  className: "orange-btn"
               },
             }
           })
