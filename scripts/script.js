@@ -25,12 +25,12 @@ var $row7 = $('.row-7')
 //sliding animation 
 
 
-
 var game = {
     players: [{name: "Player 1", color: "red"}, {name: "Player 2", color: "yellow"}],
     currentPlayer: null,
     gameOver: false,
     init: function(){
+        game.setPlayerColor()
         $newGame.text("New Game")
         game.currentPlayer = game.players[0]
         $('#column-1').click(game.renderCurrentPlayer)
@@ -48,6 +48,65 @@ var game = {
         game.currentPlayer = game.players[0]
         $gameResultOutput.text("")
         $row.css("background-color", "rgb(255, 255, 255)")
+    },
+    setPlayerColor: function(){
+        swal("Player 1, choose your color", {
+          buttons: {
+            black: {
+                text: "black",
+                value: 'rgb(0, 0, 0)',
+                className: "black-btn"
+            },
+            yellow: {
+                text: "yellow",
+                value: 'rgb(255, 255, 0)',
+                className: "yellow-btn"
+            },
+            pink: {
+                text: "pink",
+                value: 'rgb(255, 51, 153)',
+                className: "pink-btn"
+            },
+            teal: {
+                text: "teal",
+                value: 'rgb(51, 233, 204)',
+                className: "teal-btn"
+            },
+          }
+        })
+        .then(function(value){
+            game.players[0].color = value
+            console.log(game.players[0].color)
+
+        swal("Player 2, choose your color", {
+            buttons: {
+              black: {
+                  text: "black",
+                  value: 'rgb(0, 0, 0)',
+                  className: "black-btn"
+              },
+              yellow: {
+                  text: "yellow",
+                  value: 'rgb(255, 255, 0)',
+                  className: "yellow-btn"
+              },
+              pink: {
+                  text: "pink",
+                  value: 'rgb(255, 51, 153)',
+                  className: "pink-btn"
+              },
+              teal: {
+                  text: "teal",
+                  value: 'rgb(51, 233, 204)',
+                  className: "teal-btn"
+              },
+            }
+          })
+          .then(function(value){
+              game.players[1].color = value
+              console.log(game.players[1].color)
+          })
+        })
     },
     switchPlayer: function(){
         if (game.currentPlayer === game.players[0]){
@@ -152,6 +211,9 @@ if ($newGame.text() === "Start Game"){
     $($newGame).on("click", game.init)
 } 
 
-//swal("Hello world")
+
+
+
+
 
 
