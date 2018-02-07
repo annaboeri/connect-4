@@ -1,9 +1,10 @@
 
 var $flexContainer = $('.flex-container')
-var $gameResultOutput = $('#game-result-output')
 var $newGame = $('#new-game')
 var $player1Score = $('#player-1-score')
 var $player2Score = $('#player-2-score')
+var $player1Box = $('#player-1-box')
+var $player2Box = $('#player-2-box')
 var $row = $('.row')
 var $currentSlot 
 var currentPlayer1Score = 0
@@ -18,9 +19,6 @@ var $row6 = $('.row-6')
 var $row7 = $('.row-7')
 
 
-//fix scoreboard in css - flexbox
-//highlight players whose turn it currently is
-//allow player to pick color
 //add sound effects
 //sliding animation 
 
@@ -51,24 +49,21 @@ var game = {
     },
     setPlayerColor: function(){
         swal("Player 1, choose your color", {
+          closeOnClickOutside: false,
           buttons: {
             black: {
-                text: "black",
                 value: 'rgb(0, 0, 0)',
                 className: "black-btn"
             },
             yellow: {
-                text: "yellow",
                 value: 'rgb(255, 255, 0)',
                 className: "yellow-btn"
             },
             pink: {
-                text: "pink",
                 value: 'rgb(255, 51, 153)',
                 className: "pink-btn"
             },
             teal: {
-                text: "teal",
                 value: 'rgb(51, 233, 204)',
                 className: "teal-btn"
             },
@@ -79,24 +74,21 @@ var game = {
             console.log(game.players[0].color)
 
         swal("Player 2, choose your color", {
+            closeOnClickOutside: false,
             buttons: {
               black: {
-                  text: "black",
                   value: 'rgb(0, 0, 0)',
                   className: "black-btn"
               },
               yellow: {
-                  text: "yellow",
                   value: 'rgb(255, 255, 0)',
                   className: "yellow-btn"
               },
               pink: {
-                  text: "pink",
                   value: 'rgb(255, 51, 153)',
                   className: "pink-btn"
               },
               teal: {
-                  text: "teal",
                   value: 'rgb(51, 233, 204)',
                   className: "teal-btn"
               },
@@ -111,9 +103,14 @@ var game = {
     switchPlayer: function(){
         if (game.currentPlayer === game.players[0]){
             game.currentPlayer = game.players[1]
+            $player1Box.css("background-color", "rgba(255, 255, 255, 0.95)")
+            $player2Box.css("background-color", game.currentPlayer.color)
+
         } 
         else {
             game.currentPlayer = game.players[0]
+            $player2Box.css("background-color", "rgba(255, 255, 255, 0.95)")
+            $player1Box.css("background-color", game.currentPlayer.color)
         }
     },
     renderCurrentPlayer: function(){
