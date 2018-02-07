@@ -17,7 +17,10 @@ var $row5 = $('.row-5')
 var $row6 = $('.row-6')
 var $row7 = $('.row-7')
 
+//fix css
 //highlight players whose turn it is
+//allow player to pick color
+
 
 
 var game = {
@@ -85,8 +88,6 @@ var game = {
                 $gameResultOutput.text(game.currentPlayer.name + " wins!")
                 game.updateScore()
                 game.gameOver = true
-                //document.querySelectorAll(".flex-container").removeEventListener("click", game.renderCurrentPlayer)
-
             }
         }
     },
@@ -103,6 +104,7 @@ var game = {
             $gameResultOutput.css("color", game.currentPlayer.color)
             $gameResultOutput.text(game.currentPlayer.name + " wins!")
             game.updateScore()
+            game.gameOver = true
             } 
         }
     },
@@ -119,6 +121,7 @@ var game = {
             $gameResultOutput.css("color", game.currentPlayer.color)
             $gameResultOutput.text(game.currentPlayer.name + " wins!")
             game.updateScore()
+            game.gameOver = true
             } 
         }
     },
@@ -135,19 +138,19 @@ var game = {
             $gameResultOutput.css("color", game.currentPlayer.color)
             $gameResultOutput.text(game.currentPlayer.name + " wins!")
             game.updateScore()
+            game.gameOver = true
             }
        }
     } 
 }
 
-document.querySelector("#column-1").addEventListener("click", game.renderCurrentPlayer)
-document.querySelector("#column-2").addEventListener("click", game.renderCurrentPlayer)
-document.querySelector("#column-3").addEventListener("click", game.renderCurrentPlayer)
-document.querySelector("#column-4").addEventListener("click", game.renderCurrentPlayer)
-document.querySelector("#column-5").addEventListener("click", game.renderCurrentPlayer)
-document.querySelector("#column-6").addEventListener("click", game.renderCurrentPlayer)
-document.querySelector("#column-7").addEventListener("click", game.renderCurrentPlayer)
-
+$('#column-1').click(game.renderCurrentPlayer)
+$('#column-2').click(game.renderCurrentPlayer)
+$('#column-3').click(game.renderCurrentPlayer)
+$('#column-4').click(game.renderCurrentPlayer)
+$('#column-5').click(game.renderCurrentPlayer)
+$('#column-6').click(game.renderCurrentPlayer)
+$('#column-7').click(game.renderCurrentPlayer)
 
 game.init()
 
