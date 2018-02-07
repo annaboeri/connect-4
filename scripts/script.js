@@ -17,9 +17,12 @@ var $row5 = $('.row-5')
 var $row6 = $('.row-6')
 var $row7 = $('.row-7')
 
-//fix css
-//highlight players whose turn it is
+
+//fix scoreboard in css - flexbox
+//highlight players whose turn it currently is
 //allow player to pick color
+//add sound effects
+//sliding animation 
 
 
 
@@ -28,18 +31,24 @@ var game = {
     currentPlayer: null,
     gameOver: false,
     init: function(){
-        console.log('Game initialized')
+        $newGame.text("New Game")
         game.currentPlayer = game.players[0]
+        $('#column-1').click(game.renderCurrentPlayer)
+        $('#column-2').click(game.renderCurrentPlayer)
+        $('#column-3').click(game.renderCurrentPlayer)
+        $('#column-4').click(game.renderCurrentPlayer)
+        $('#column-5').click(game.renderCurrentPlayer)
+        $('#column-6').click(game.renderCurrentPlayer)
+        $('#column-7').click(game.renderCurrentPlayer)
+        $($newGame).off("click", game.init)
+        $($newGame).click(game.resetGame)
+    },
+    resetGame: function(){
         game.gameOver = false
+        game.currentPlayer = game.players[0]
         $gameResultOutput.text("")
         $row.css("background-color", "rgb(255, 255, 255)")
     },
-     //resetGame: function(){
-    //     console.log("GAME OVER")
-    //     game.init()
-    
-    // },
-
     switchPlayer: function(){
         if (game.currentPlayer === game.players[0]){
             game.currentPlayer = game.players[1]
@@ -47,8 +56,7 @@ var game = {
         else {
             game.currentPlayer = game.players[0]
         }
-     },
-    
+    },
     renderCurrentPlayer: function(){
         if (game.gameOver !== true){
             for (var i = 5; i >= 0; i--){
@@ -65,8 +73,7 @@ var game = {
             game.checkRightAndUp()
             game.switchPlayer()
         }    
-},
-
+    },
     updateScore: function(){
         if (game.currentPlayer.name === "Player 1"){
             currentPlayer1Score = currentPlayer1Score + 1
@@ -75,7 +82,7 @@ var game = {
             currentPlayer2Score = currentPlayer2Score + 1
             $player2Score.text(currentPlayer2Score) 
         }
-     },
+    },
     checkVertical: function(){
         if ($currentSlot.css("background-color") !== "rgba(255, 255, 255)"){
             if ($currentSlot.css("background-color") === $currentSlot.prev().css("background-color") &&
@@ -91,7 +98,6 @@ var game = {
             }
         }
     },
-    
     checkHorizontal: function(){
         var currentSlotIndex = $currentSlot.index()
         if ($currentSlot.css("background-color") !== "rgba(255, 255, 255)"){
@@ -108,7 +114,6 @@ var game = {
             } 
         }
     },
-
     checkRightAndDown: function(){
         var currentSlotIndex = $currentSlot.index()
         if ($currentSlot.css("background-color") !== "rgba(255, 255, 255)"){
@@ -125,7 +130,6 @@ var game = {
             } 
         }
     },
-
     checkRightAndUp: function(){
        var currentSlotIndex = $currentSlot.index()
        if ($currentSlot.css("background-color") !== "rgba(255, 255, 255)"){
@@ -144,14 +148,10 @@ var game = {
     } 
 }
 
-$('#column-1').click(game.renderCurrentPlayer)
-$('#column-2').click(game.renderCurrentPlayer)
-$('#column-3').click(game.renderCurrentPlayer)
-$('#column-4').click(game.renderCurrentPlayer)
-$('#column-5').click(game.renderCurrentPlayer)
-$('#column-6').click(game.renderCurrentPlayer)
-$('#column-7').click(game.renderCurrentPlayer)
+if ($newGame.text() === "Start Game"){
+    $($newGame).on("click", game.init)
+} 
 
-game.init()
+//swal("Hello world")
 
-$($newGame).click(game.init)
+
