@@ -85,21 +85,35 @@ var game = {
     },
     renderCurrentPlayer: function(){
         if (game.gameOver !== true){
-            for (var i = 5; i >= 0; i--){
-            var $newSlot = $(this).children().eq(i)
-            if ($newSlot.css("background-color") === "rgb(255, 255, 255)"){
-                   $newSlot.css("background-color", game.currentPlayer.color)
-                   break
-                }    
-            }   
-            var diskDropSound = new Audio ('sounds/disk-drop.wav')
-            diskDropSound.play()
-            $currentSlot = $newSlot
-            game.switchPlayer()
-            game.checkVertical()
-            game.checkHorizontal()
-            game.checkRightAndDown()
-            game.checkRightAndUp()
+            var $column = $(this).children()
+            for (var j = 0; j < $column.length; j++){
+                (function(j){
+                    console.log( $column.eq(j))
+                    setTimeout(function(){
+                        $column.eq(j).css("background-color", game.currentPlayer.color)}
+                    , 400 * (j))
+                    setTimeout(function(){
+                        $column.eq(j).css("background-color", "rgb(255, 255, 255)")
+                    }, 550 * j)
+                })(j)
+            }
+
+            // for (var i = 5; i >= 0; i--){
+            //     var $newSlot = $(this).children().eq(i)
+            //     if ($newSlot.css("background-color") === "rgb(255, 255, 255)"){
+            //         $newSlot.css("background-color", game.currentPlayer.color)
+            //         break
+            //     }    
+            // }   
+            // var diskDropSound = new Audio ('sounds/disk-drop.wav')
+            // diskDropSound.play()
+            // $currentSlot = $newSlot    
+            // game.switchPlayer()
+            // game.checkVertical()
+            // game.checkHorizontal()
+            // game.checkRightAndDown()
+            // game.checkRightAndUp()
+
         }    
     },
     updateScore: function(){
