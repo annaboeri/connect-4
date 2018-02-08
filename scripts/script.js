@@ -11,14 +11,6 @@ var $currentSlot
 var currentPlayer1Score = 0
 var currentPlayer2Score = 0
 
-var $row1 = $('.row-1')
-var $row2 = $('.row-2')
-var $row3 = $('.row-3')
-var $row4 = $('.row-4')
-var $row5 = $('.row-5')
-var $row6 = $('.row-6')
-var $row7 = $('.row-7')
-
 
 var game = {
     players: [{name: "Player 1", color: "red"}, {name: "Player 2", color: "yellow"}],
@@ -70,7 +62,6 @@ var game = {
         })
         .then(function(value){      
             game.currentPlayer.color = value
-            console.log(game.currentPlayer.color)
             if(game.currentPlayer !== game.players[1]){
                 game.currentPlayer = game.players[1]
                 game.setPlayerColor()
