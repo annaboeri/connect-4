@@ -99,21 +99,27 @@ var game = {
                 console.log(j)
             }
         }
-        // for (var i = 5; i >= 0; i--){
-        //     var $newSlot = $(this).children().eq(i)
-        //     if ($newSlot.css("background-color") === "rgb(255, 255, 255)"){
-        //         $newSlot.css("background-color", game.currentPlayer.color)
-        //         break
-        //     }    
-        // }   
-        // var diskDropSound = new Audio ('sounds/disk-drop.wav')
-        // diskDropSound.play()
-        // $currentSlot = $newSlot    
-        game.switchPlayer()
-        game.checkVertical()
-        game.checkHorizontal()
-        game.checkRightAndDown()
-        game.checkRightAndUp()
+        setTimeout(function(){
+            for (var i = 5; i >= 0; i--){
+       
+                var $newSlot = $(this).children().eq(i)
+                console.log("new Slot " + $newSlot)
+                if ($newSlot.css("background-color") === "rgb(255, 255, 255)"){
+                    $newSlot.css("background-color", game.currentPlayer.color)
+                    break
+                }    
+            }   
+            var diskDropSound = new Audio ('sounds/disk-drop.wav')
+            diskDropSound.play()
+            $currentSlot = $newSlot    
+            game.switchPlayer()
+            game.checkVertical()
+            game.checkHorizontal()
+            game.checkRightAndDown()
+            game.checkRightAndUp()
+
+        },4000)
+    
     
     },
     updateScore: function(){
