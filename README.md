@@ -19,17 +19,9 @@ As a player, I should be able to restart the game and play a new game
 
 As a user, I want the game to have sound effects and animation to make it more exciting
 
+#### Outstanding Challenges
+
+Attempted to animate the board to look like the disks were sliding down the column but failed to integrate the effect properly into my code base without breaking other featues
 
 #### Approach
 Documented using [Trello] (https://trello.com/b/Y4wQH05J/wdi-project-1-connect-4) 
-
-#### Outstanding Challenges
-Attempted to animate the board to look like the disks were sliding down the column but failed to integrate the effect properly into my code base without breaking other featues
-
-
-#### Acknowledgements 
-
-##### Fonts
-Google Fonts
-
-##### Images
