@@ -121,6 +121,8 @@ var game = {
                    break
                 }    
             }   
+            var diskDropSound = new Audio ('sounds/disk-drop.wav')
+            diskDropSound.play()
             $currentSlot = $newSlot
             game.switchPlayer()
             game.checkVertical()

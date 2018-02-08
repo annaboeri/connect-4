@@ -28,30 +28,22 @@ h1 {
     margin: 5px 20px 20px 20px;
     padding: 5px;
     text-align: center;
-    font-size: 20px;
+    vertical-align: middle;
+    font-size: 25px;
     border: 3px solid black;
     border-radius: 5px;
-    width: 150px;
+    width: 170px;
 }
 
 span {
-    font-size: 22px;
-    text-decoration: bold;
+    font-size: 28px;
+    font-family: 'Bungee Shade', cursive;
+    padding: 2px;
 }
 
 #new-game {
     border: 10px double orange;
-}
-
-#game-result-output {
-    height: 50px;
-    width: 400px;
-    text-align: center;
-    margin: 5px auto;
-    font-size: 30px;
-    background-color: rgba(255, 255, 255, 0.95);
-    border: 1px solid black;
-    border-radius: 5px;
+    width: 180px;
 }
 
 #gameboard {
@@ -100,7 +92,7 @@ span {
     margin: 0 auto;
     padding: 7px 19px;
     border-radius: 40px;
-    font-size: 18px;
+    font-size: 16px;
     text-transform: uppercase; 
     border: 1px solid black;
   }
