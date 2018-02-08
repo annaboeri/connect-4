@@ -5,6 +5,7 @@ var $player1Score = $('#player-1-score')
 var $player2Score = $('#player-2-score')
 var $player1Box = $('#player-1-box')
 var $player2Box = $('#player-2-box')
+var $playerBox = $('.info')
 var $row = $('.row')
 var $currentSlot 
 var currentPlayer1Score = 0
@@ -121,11 +122,11 @@ var game = {
                 }    
             }   
             $currentSlot = $newSlot
+            game.switchPlayer()
             game.checkVertical()
             game.checkHorizontal()
             game.checkRightAndDown()
             game.checkRightAndUp()
-            game.switchPlayer()
         }    
     },
     updateScore: function(){
@@ -145,8 +146,8 @@ var game = {
             $currentSlot.css("background-color") === $currentSlot.next().css("background-color") &&
             $currentSlot.next().css("background-color") === $currentSlot.next().next().css("background-color") &&
             $currentSlot.next().next().css("background-color") === $currentSlot.next().next().next().css("background-color")){
-                $gameResultOutput.css("color", game.currentPlayer.color)
-                $gameResultOutput.text(game.currentPlayer.name + " wins!")
+                swal(game.currentPlayer.name + " wins!")
+                $playerBox.css("background-color", "rgba(255, 255, 255, 0.95)")
                 game.updateScore()
                 game.gameOver = true
             }
@@ -161,8 +162,8 @@ var game = {
             $currentSlot.css("background-color") === $currentSlot.parent().next().children().eq(currentSlotIndex).css("background-color") &&
             $currentSlot.parent().next().children().eq(currentSlotIndex).css("background-color") === $currentSlot.parent().next().next().children().eq(currentSlotIndex).css("background-color") &&
             $currentSlot.parent().next().next().children().eq(currentSlotIndex).css("background-color")  === $currentSlot.parent().next().next().next().children().eq(currentSlotIndex).css("background-color")) {
-            $gameResultOutput.css("color", game.currentPlayer.color)
-            $gameResultOutput.text(game.currentPlayer.name + " wins!")
+            swal(game.currentPlayer.name + " wins!")
+            $playerBox.css("background-color", "rgba(255, 255, 255, 0.95)")
             game.updateScore()
             game.gameOver = true
             } 
@@ -177,8 +178,8 @@ var game = {
             $currentSlot.css("background-color") === $currentSlot.parent().next().children().eq(currentSlotIndex + 1).css("background-color") &&
             $currentSlot.parent().next().children().eq(currentSlotIndex + 1).css("background-color") === $currentSlot.parent().next().next().children().eq(currentSlotIndex + 2).css("background-color") &&
             $currentSlot.parent().next().next().children().eq(currentSlotIndex + 2).css("background-color")  === $currentSlot.parent().next().next().next().children().eq(currentSlotIndex + 3).css("background-color")) {
-            $gameResultOutput.css("color", game.currentPlayer.color)
-            $gameResultOutput.text(game.currentPlayer.name + " wins!")
+            swal(game.currentPlayer.name + " wins!")
+            $playerBox.css("background-color", "rgba(255, 255, 255, 0.95)")
             game.updateScore()
             game.gameOver = true
             } 
@@ -193,8 +194,8 @@ var game = {
             $currentSlot.css("background-color") === $currentSlot.parent().next().children().eq(currentSlotIndex - 1).css("background-color") &&
             $currentSlot.parent().next().children().eq(currentSlotIndex - 1).css("background-color") === $currentSlot.parent().next().next().children().eq(currentSlotIndex - 2).css("background-color") &&
             $currentSlot.parent().next().next().children().eq(currentSlotIndex - 2).css("background-color")  === $currentSlot.parent().next().next().next().children().eq(currentSlotIndex - 3).css("background-color")) {
-            $gameResultOutput.css("color", game.currentPlayer.color)
-            $gameResultOutput.text(game.currentPlayer.name + " wins!")
+            swal(game.currentPlayer.name + " wins!")
+            $playerBox.css("background-color", "rgba(255, 255, 255, 0.95)")
             game.updateScore()
             game.gameOver = true
             }
