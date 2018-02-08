@@ -25,9 +25,9 @@ var game = {
     currentPlayer: null,
     gameOver: false,
     init: function(){
+        game.currentPlayer = game.players[0]
         game.setPlayerColor()
         $newGame.text("New Game")
-        game.currentPlayer = game.players[0]
         $('#column-1').click(game.renderCurrentPlayer)
         $('#column-2').click(game.renderCurrentPlayer)
         $('#column-3').click(game.renderCurrentPlayer)
@@ -47,7 +47,7 @@ var game = {
         
     },
     setPlayerColor: function(){
-        swal("Player 1, choose your color", {
+        swal(game.currentPlayer.name + ", choose your color", {
           closeOnClickOutside: false,
           buttons: {
             green: {
@@ -68,35 +68,15 @@ var game = {
             },
           }
         })
-        .then(function(value){
-            game.players[0].color = value
-            console.log(game.players[0].color)
-
-        swal("Player 2, choose your color", {
-            closeOnClickOutside: false,
-            buttons: {
-              green: {
-                  value: 'rgb(51, 204, 51)',
-                  className: "green-btn"
-              },
-              yellow: {
-                  value: 'rgb(255, 255, 0)',
-                  className: "yellow-btn"
-              },
-              pink: {
-                  value: 'rgb(255, 51, 153)',
-                  className: "pink-btn"
-              },
-              orange: {
-                  value: 'rgb(255, 140, 26)',
-                  className: "orange-btn"
-              },
+        .then(function(value){      
+            game.currentPlayer.color = value
+            console.log(game.currentPlayer.color)
+            if(game.currentPlayer !== game.players[1]){
+                game.currentPlayer = game.players[1]
+                game.setPlayerColor()
+            } else{
+                game.currentPlayer = game.players[0]
             }
-          })
-          .then(function(value){
-              game.players[1].color = value
-              console.log(game.players[1].color)
-          })
         })
     },
     switchPlayer: function(){
