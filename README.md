@@ -27,5 +27,3 @@ Javascript, JQuery, HTML5, CSS3
 
 * Also need to add functionality that deactivates player 1's disk color selection so that player 2 cannot choose the same disk color
 
-#### Approach
-Documented using [Trello](https://trello.com/b/Y4wQH05J/wdi-project-1-connect-4) 
