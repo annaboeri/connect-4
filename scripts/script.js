@@ -6,10 +6,12 @@ var $player2Score = $('#player-2-score')
 var $player1Box = $('#player-1-box')
 var $player2Box = $('#player-2-box')
 var $playerBox = $('.info')
+var $musicBtn = $('#music-btn')
 var $row = $('.row')
 var $currentSlot 
 var currentPlayer1Score = 0
 var currentPlayer2Score = 0
+var backgroundMusic = new Audio ('sounds/background-song.mp3')
 
 
 var game = {
@@ -17,7 +19,6 @@ var game = {
     currentPlayer: null,
     gameOver: false,
     init: function(){
-        var backgroundMusic = new Audio ('sounds/background-song.mp3')
         backgroundMusic.play()
         game.currentPlayer = game.players[0]
         game.setPlayerColor()
@@ -182,6 +183,11 @@ if ($newGame.text() === "Start Game"){
     $($newGame).on("click", game.init)
 } 
 
+function turnOffMusic (){
+    backgroundMusic.pause()
+}
+
+$musicBtn.on("click", turnOffMusic)
 
 
 
