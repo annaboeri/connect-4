@@ -10,7 +10,7 @@
 Players take turns dropping colored disks into the top of a 7 column, 6 row grid. The object of the game is to be the first player to form a horizontal, vertical, or diagnoal line of four.
 
 #### Technologies Used
-Javascript, JQuery, HTML5, CSS3, SweetAlert
+Javascript, JQuery, HTML5, CSS3
 
 #### User Stories
 As a player, I should be ale to choose what color disk I have.
