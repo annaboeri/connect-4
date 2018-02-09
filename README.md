@@ -4,7 +4,7 @@
 
 [Click to play](https://annaboeri.github.io/connect-4/)
 
-(./images/Connect4ScreenShot.png)
+![game screenshot](images/Connect4ScreenShot.png)
 
 ### Objective
 Players take turns dropping colored disks into the top of a 7 column, 6 row grid. The object of the game is to be the first player to form a horizontal, vertical, or diagnoal line of four disks.
