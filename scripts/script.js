@@ -17,6 +17,8 @@ var game = {
     currentPlayer: null,
     gameOver: false,
     init: function(){
+        var backgroundMusic = new Audio ('sounds/background-song.mp3')
+        backgroundMusic.play()
         game.currentPlayer = game.players[0]
         game.setPlayerColor()
         $newGame.text("New Game")
