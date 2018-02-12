@@ -115,67 +115,99 @@ var game = {
         }
     },
     checkVertical: function(){
-        if ($currentSlot.css("background-color") !== "rgba(255, 255, 255)"){
-            if ($currentSlot.css("background-color") === $currentSlot.prev().css("background-color") &&
-            $currentSlot.prev().css("background-color") === $currentSlot.prev().prev().css("background-color") &&
-            $currentSlot.prev().prev().css("background-color") === $currentSlot.prev().prev().prev().css("background-color") ||
-            $currentSlot.css("background-color") === $currentSlot.next().css("background-color") &&
-            $currentSlot.next().css("background-color") === $currentSlot.next().next().css("background-color") &&
-            $currentSlot.next().next().css("background-color") === $currentSlot.next().next().next().css("background-color")){
-                swal(game.currentPlayer.name + " wins!")
-                $playerBox.css("background-color", "rgba(255, 255, 255, 0.95)")
-                game.updateScore()
-                game.gameOver = true
+        var currentSlot =  $currentSlot.css("background-color") 
+        var slotDownOne = $currentSlot.next().css("background-color")
+        var slotDownTwo = $currentSlot.next().next().css("background-color") 
+        var slotDownThree =  $currentSlot.next().next().next().css("background-color")
+        var slotUpOne = $currentSlot.prev().css("background-color") 
+        var slotUpTwo = $currentSlot.prev().prev().css("background-color")
+        var slotUpThree = $currentSlot.prev().prev().prev().css("background-color") 
+
+        if (currentSlot !== "rgba(255, 255, 255)"){
+            if (currentSlot === slotUpOne &&
+                slotUpOne === slotUpTwo &&
+                slotUpTwo === slotUpThree || 
+                currentSlot ===  slotDownOne &&
+                slotDownOne === slotDownTwo &&
+                slotDownTwo === slotDownThree){
+                    swal(game.currentPlayer.name + " wins!")
+                    $playerBox.css("background-color", "rgba(255, 255, 255, 0.95)")
+                    game.updateScore()
+                    game.gameOver = true
+                    }
             }
-        }
     },
     checkHorizontal: function(){
         var currentSlotIndex = $currentSlot.index()
-        if ($currentSlot.css("background-color") !== "rgba(255, 255, 255)"){
-            if ($currentSlot.css("background-color") === $currentSlot.parent().prev().children().eq(currentSlotIndex).css("background-color") &&
-            $currentSlot.parent().prev().children().eq(currentSlotIndex).css("background-color") === $currentSlot.parent().prev().prev().children().eq(currentSlotIndex).css("background-color") &&
-            $currentSlot.parent().prev().prev().children().eq(currentSlotIndex).css("background-color")  === $currentSlot.parent().prev().prev().prev().children().eq(currentSlotIndex).css("background-color") ||
-            $currentSlot.css("background-color") === $currentSlot.parent().next().children().eq(currentSlotIndex).css("background-color") &&
-            $currentSlot.parent().next().children().eq(currentSlotIndex).css("background-color") === $currentSlot.parent().next().next().children().eq(currentSlotIndex).css("background-color") &&
-            $currentSlot.parent().next().next().children().eq(currentSlotIndex).css("background-color")  === $currentSlot.parent().next().next().next().children().eq(currentSlotIndex).css("background-color")) {
-            swal(game.currentPlayer.name + " wins!")
-            $playerBox.css("background-color", "rgba(255, 255, 255, 0.95)")
-            game.updateScore()
-            game.gameOver = true
+        var currentSlot =  $currentSlot.css("background-color") 
+        var slotRightOne = $currentSlot.parent().next().children().eq(currentSlotIndex).css("background-color")
+        var slotRightTwo = $currentSlot.parent().next().next().children().eq(currentSlotIndex).css("background-color")
+        var slotRightThree = $currentSlot.parent().next().next().next().children().eq(currentSlotIndex).css("background-color")
+        var slotLeftOne = $currentSlot.parent().prev().children().eq(currentSlotIndex).css("background-color")
+        var slotLeftTwo = $currentSlot.parent().prev().prev().children().eq(currentSlotIndex).css("background-color") 
+        var slotLeftThree = $currentSlot.parent().prev().prev().prev().children().eq(currentSlotIndex).css("background-color")
+
+        if (currentSlot !== "rgba(255, 255, 255)"){
+            if (currentSlot === slotLeftOne &&
+                slotLeftOne === slotLeftTwo &&
+                slotLeftTwo === slotLeftThree || 
+                currentSlot ===  slotRightOne &&
+                slotRightOne === slotRightTwo &&
+                slotRightTwo === slotRightThree){
+                    swal(game.currentPlayer.name + " wins!")
+                    $playerBox.css("background-color", "rgba(255, 255, 255, 0.95)")
+                    game.updateScore()
+                    game.gameOver = true
             } 
         }
     },
     checkRightAndDown: function(){
         var currentSlotIndex = $currentSlot.index()
-        if ($currentSlot.css("background-color") !== "rgba(255, 255, 255)"){
-            if ($currentSlot.css("background-color") === $currentSlot.parent().prev().children().eq(currentSlotIndex - 1).css("background-color") &&
-            $currentSlot.parent().prev().children().eq(currentSlotIndex - 1).css("background-color") === $currentSlot.parent().prev().prev().children().eq(currentSlotIndex - 2).css("background-color") &&
-            $currentSlot.parent().prev().prev().children().eq(currentSlotIndex - 2).css("background-color")  === $currentSlot.parent().prev().prev().prev().children().eq(currentSlotIndex - 3).css("background-color") ||
-            $currentSlot.css("background-color") === $currentSlot.parent().next().children().eq(currentSlotIndex + 1).css("background-color") &&
-            $currentSlot.parent().next().children().eq(currentSlotIndex + 1).css("background-color") === $currentSlot.parent().next().next().children().eq(currentSlotIndex + 2).css("background-color") &&
-            $currentSlot.parent().next().next().children().eq(currentSlotIndex + 2).css("background-color")  === $currentSlot.parent().next().next().next().children().eq(currentSlotIndex + 3).css("background-color")) {
-            swal(game.currentPlayer.name + " wins!")
-            $playerBox.css("background-color", "rgba(255, 255, 255, 0.95)")
-            game.updateScore()
-            game.gameOver = true
+        var currentSlot =  $currentSlot.css("background-color") 
+        var slotRightOne = $currentSlot.parent().next().children().eq(currentSlotIndex - 1).css("background-color")
+        var slotRightTwo = $currentSlot.parent().next().next().children().eq(currentSlotIndex - 2).css("background-color")
+        var slotRightThree = $currentSlot.parent().next().next().next().children().eq(currentSlotIndex - 3).css("background-color")
+        var slotLeftOne = $currentSlot.parent().prev().children().eq(currentSlotIndex + 1).css("background-color")
+        var slotLeftTwo = $currentSlot.parent().prev().prev().children().eq(currentSlotIndex + 2).css("background-color") 
+        var slotLeftThree = $currentSlot.parent().prev().prev().prev().children().eq(currentSlotIndex + 3).css("background-color")
+   
+        if (currentSlot !== "rgba(255, 255, 255)"){
+            if (currentSlot === slotLeftOne &&
+                slotLeftOne === slotLeftTwo &&
+                slotLeftTwo === slotLeftThree || 
+                currentSlot ===  slotRightOne &&
+                slotRightOne === slotRightTwo &&
+                slotRightTwo === slotRightThree){
+                    swal(game.currentPlayer.name + " wins!")
+                    $playerBox.css("background-color", "rgba(255, 255, 255, 0.95)")
+                    game.updateScore()
+                    game.gameOver = true
             } 
         }
     },
     checkRightAndUp: function(){
-       var currentSlotIndex = $currentSlot.index()
-       if ($currentSlot.css("background-color") !== "rgba(255, 255, 255)"){
-            if ($currentSlot.css("background-color") === $currentSlot.parent().prev().children().eq(currentSlotIndex + 1).css("background-color") &&
-            $currentSlot.parent().prev().children().eq(currentSlotIndex + 1).css("background-color") === $currentSlot.parent().prev().prev().children().eq(currentSlotIndex + 2).css("background-color") &&
-            $currentSlot.parent().prev().prev().children().eq(currentSlotIndex + 2).css("background-color")  === $currentSlot.parent().prev().prev().prev().children().eq(currentSlotIndex + 3).css("background-color") ||
-            $currentSlot.css("background-color") === $currentSlot.parent().next().children().eq(currentSlotIndex - 1).css("background-color") &&
-            $currentSlot.parent().next().children().eq(currentSlotIndex - 1).css("background-color") === $currentSlot.parent().next().next().children().eq(currentSlotIndex - 2).css("background-color") &&
-            $currentSlot.parent().next().next().children().eq(currentSlotIndex - 2).css("background-color")  === $currentSlot.parent().next().next().next().children().eq(currentSlotIndex - 3).css("background-color")) {
-            swal(game.currentPlayer.name + " wins!")
-            $playerBox.css("background-color", "rgba(255, 255, 255, 0.95)")
-            game.updateScore()
-            game.gameOver = true
-            }
-       }
+        var currentSlotIndex = $currentSlot.index()
+        var currentSlot =  $currentSlot.css("background-color") 
+        var slotRightOne = $currentSlot.parent().next().children().eq(currentSlotIndex + 1).css("background-color")
+        var slotRightTwo = $currentSlot.parent().next().next().children().eq(currentSlotIndex + 2).css("background-color")
+        var slotRightThree = $currentSlot.parent().next().next().next().children().eq(currentSlotIndex + 3).css("background-color")
+        var slotLeftOne = $currentSlot.parent().prev().children().eq(currentSlotIndex - 1).css("background-color")
+        var slotLeftTwo = $currentSlot.parent().prev().prev().children().eq(currentSlotIndex - 2).css("background-color") 
+        var slotLeftThree = $currentSlot.parent().prev().prev().prev().children().eq(currentSlotIndex - 3).css("background-color")
+   
+        if (currentSlot !== "rgba(255, 255, 255)"){
+            if (currentSlot === slotLeftOne &&
+                slotLeftOne === slotLeftTwo &&
+                slotLeftTwo === slotLeftThree || 
+                currentSlot ===  slotRightOne &&
+                slotRightOne === slotRightTwo &&
+                slotRightTwo === slotRightThree){
+                    swal(game.currentPlayer.name + " wins!")
+                    $playerBox.css("background-color", "rgba(255, 255, 255, 0.95)")
+                    game.updateScore()
+                    game.gameOver = true
+            } 
+        }
     } 
 }
 
